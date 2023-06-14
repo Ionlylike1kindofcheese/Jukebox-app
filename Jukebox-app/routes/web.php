@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,11 +30,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// users
 Route::get('/getallusernames', [ProfileController::class, 'getAllUserNames']);
 
+// genre
 Route::get('/genre/all', [GenreController::class, 'index'])->name('genre.index');
 Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
 Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
 Route::get('/genre/destroy/{genre}', [GenreController::class, 'destroy'])->name('genre.destroy');
+
+// playlists
+Route::get('/playlist/all', [PlaylistController::class, 'index'])->name('playlist.index');
+Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
+Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
+Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
 
 require __DIR__.'/auth.php';
