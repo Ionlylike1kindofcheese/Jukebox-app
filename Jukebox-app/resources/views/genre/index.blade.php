@@ -11,7 +11,7 @@
   @foreach($genres as $genre)
     <li><a href="{{route('genre.destroy', ['genre' => $genre->id])}}">X</a> {{$genre->name}}</li>
   @endforeach
-  <a href="{{route('genre.create')}}">Genre Toevoegen</a>
   </ul>
+  <a href="{{route('genre.create')}}">Genre Toevoegen</a>
 </body>
 </html>
