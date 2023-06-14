@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,5 +30,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/getallusernames', [ProfileController::class, 'getAllUserNames']);
+
+Route::get('/genre/all', [GenreController::class, 'index'])->name('genre.index');
+Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
+Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
+Route::get('/genre/destroy/{genre}', [GenreController::class, 'destroy'])->name('genre.destroy');
 
 require __DIR__.'/auth.php';
