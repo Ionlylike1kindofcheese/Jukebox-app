@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\SongController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,5 +45,11 @@ Route::get('/playlist/all', [PlaylistController::class, 'index'])->name('playlis
 Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
 Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
 Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
+
+// songs
+Route::get('/song/all', [SongController::class, 'index'])->name('song.index');
+Route::get('/song/create', [SongController::class, 'create'])->name('song.create');
+Route::post('/song/store', [SongController::class, 'store'])->name('song.store');
+Route::get('/song/destroy/{song}', [SongController::class, 'destroy'])->name('song.destroy');
 
 require __DIR__.'/auth.php';
