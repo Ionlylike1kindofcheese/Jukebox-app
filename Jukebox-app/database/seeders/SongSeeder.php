@@ -25,6 +25,6 @@ class SongSeeder extends Seeder
       ['name' => 'Blood Of Dracula'],
       ['name' => 'Overworld'],
     ];
-    Genre::insert($songs);
+    Song::insert($songs);
   }
 }

@@ -18,6 +18,6 @@ class PlaylistSeeder extends Seeder
       ['name' => 'playlist2'],
       ['name' => 'playlist3'],
     ];
-    Genre::insert($playlists);
+    Playlist::insert($playlists);
   }
 }
