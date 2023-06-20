@@ -5,3 +5,4 @@
 # 19-6-2023: Added seeders for Genre, Song and Playlist
 # 19-6-2023: Added many-to-many relation between Playlist and Song
 # 19-6-2023: Expanded database migration/seeder for Song
+# 20-6-2023: Added many-to-many relation between Genre and Song
