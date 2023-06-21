@@ -12,9 +12,12 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
+    // individual seeders
     $this->call(GenreSeeder::class);
     $this->call(SongSeeder::class);
     $this->call(PlaylistSeeder::class);
+    // many-to-many relational table seeders
+    $this->call(PlaylistSongSeeder::class);
     // \App\Models\User::factory(10)->create();
 
     // \App\Models\User::factory()->create([
