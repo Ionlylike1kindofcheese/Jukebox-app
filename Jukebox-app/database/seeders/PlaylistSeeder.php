@@ -14,9 +14,10 @@ class PlaylistSeeder extends Seeder
   public function run(): void
   {
     $playlists = [
-      ['name' => 'playlist1'],
-      ['name' => 'playlist2'],
-      ['name' => 'playlist3'],
+      ['name' => 'Hit Single Real'],
+      ['name' => 'Project MSG Rebirth'],
+      ['name' => 'FNF Songs'],
+      ['name' => 'Normal Songs'],
     ];
     Playlist::insert($playlists);
   }
