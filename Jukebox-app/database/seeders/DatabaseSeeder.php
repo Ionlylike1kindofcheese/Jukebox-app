@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
     $this->call(PlaylistSeeder::class);
     // many-to-many relational table seeders
     $this->call(PlaylistSongSeeder::class);
+    $this->call(GenreSongSeeder::class);
     // \App\Models\User::factory(10)->create();
 
     // \App\Models\User::factory()->create([
