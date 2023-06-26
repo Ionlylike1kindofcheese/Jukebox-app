@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jukebox</title>
+  <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
-  <nav>
+  <nav class="comp-navbar">
     <ul>
       <a href="{{route('genre.index')}}">Genre</a>
       <a href="{{route('song.index')}}">Song</a>

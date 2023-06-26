@@ -1,0 +1,11 @@
+.comp-navbar ul {
+  display: flex;
+  margin: 0px;
+  background-color: grey;
+}
+
+.comp-navbar a {
+  padding: 10px;
+  margin-right: 3px;
+  background-color: black;
+}
