@@ -9,3 +9,12 @@
   margin-right: 3px;
   background-color: black;
 }
+
+#song-creation-genre-checkboxes {
+  display: flex;
+}
+
+#song-creation-genre-checkboxes .song-creation-genre-box {
+  padding: 1em;
+  border: 2px solid black;
+}

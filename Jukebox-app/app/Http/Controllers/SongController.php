@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Song;
+use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SongController extends Controller
 {
@@ -21,7 +23,8 @@ class SongController extends Controller
      */
     public function create()
     {
-      return view('song.create');
+      $genres = Genre::all();
+      return view('song.create', ['genres' => $genres]);
     }
 
     /**
@@ -29,9 +32,23 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-      Song::create([
-        "name" => $request['songName']
+      $song = Song::create([
+        "name" => $request['name'],
+        "author" => $request['author'],
+        "album" => $request['album'],
+        "release" => $request['release'],
+        "duration" => $request['duration'],
       ]);
+
+      $songId = $song->getAttribute('id');
+
+      foreach ($request["genre_id"] as $genreId) {
+        DB::table('genre_song')->insert([
+          'song_id' => $songId,
+          'genre_id' => $genreId,
+        ]);
+      }
+
       return redirect(route('song.index'));
     }
 
@@ -64,6 +81,7 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
+      $song->genres()->detach();
       Song::destroy($song->id);
       return redirect(route('song.index'));
     }
