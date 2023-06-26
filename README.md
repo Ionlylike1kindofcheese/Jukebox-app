@@ -8,3 +8,6 @@
 # 20-6-2023: Added many-to-many relation between Genre and Song
 # 21-6-2023: Added seeder for associations between Playlist and Song
 # 22-6-2023: Added seeder for associations between Genre and Song
+# 23-6-2023: Added navigation bar and footer to all views
+# 26-6-2023: Updated create and destroy functionality for Song
+# 26-6-2023: Added filter feature for Song
