@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
+    // user seeders
+    $this->call(UserSeeder::class);
     // individual seeders
     $this->call(GenreSeeder::class);
     $this->call(SongSeeder::class);
@@ -19,11 +21,5 @@ class DatabaseSeeder extends Seeder
     // many-to-many relational table seeders
     $this->call(PlaylistSongSeeder::class);
     $this->call(GenreSongSeeder::class);
-    // \App\Models\User::factory(10)->create();
-
-    // \App\Models\User::factory()->create([
-    //     'name' => 'Test User',
-    //     'email' => 'test@example.com',
-    // ]);
   }
 }
