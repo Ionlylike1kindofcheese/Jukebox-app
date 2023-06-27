@@ -20,12 +20,7 @@
   @foreach($songs as $song)
     <li>
       <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a>
-      {{$song->name}} 
-      @foreach($song->playlists as $playlist) 
-        @if($playlist)
-        / Playlist: {{$playlist->name}}
-        @endif 
-      @endforeach
+      {{$song->name}}
     </li>
   @endforeach
   </ul>
