@@ -5,7 +5,7 @@ use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ProfileController;
 
-use App\Http\Middleware\DeleteAuthorized;
+use App\Http\Middleware\AdminAuthorized;
 use App\Http\Middleware\LoginRequired;
 
 use Illuminate\Support\Facades\Route;
@@ -41,7 +41,7 @@ Route::middleware(LoginRequired::class)->group(function () {
   Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
   Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
 });
-Route::middleware(DeleteAuthorized::class)->group(function () {
+Route::middleware(AdminAuthorized::class)->group(function () {
   Route::get('/genre/destroy/{genre}', [GenreController::class, 'destroy'])->name('genre.destroy');
 });
 
@@ -51,7 +51,7 @@ Route::middleware(LoginRequired::class)->group(function () {
   Route::get('/song/create', [SongController::class, 'create'])->name('song.create');
   Route::post('/song/store', [SongController::class, 'store'])->name('song.store');
 });
-Route::middleware(DeleteAuthorized::class)->group(function () {
+Route::middleware(AdminAuthorized::class)->group(function () {
   Route::get('/song/destroy/{song}', [SongController::class, 'destroy'])->name('song.destroy');
 });
 
