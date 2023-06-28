@@ -40,16 +40,20 @@ Route::get('/getallusernames', [ProfileController::class, 'getAllUserNames']);
 
 // genre
 Route::get('/genre/all', [GenreController::class, 'index'])->name('genre.index');
-Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
-Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
+Route::middleware(LoginRequired::class)->group(function () {
+  Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
+  Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
+});
 Route::middleware(DeleteAuthorized::class)->group(function () {
   Route::get('/genre/destroy/{genre}', [GenreController::class, 'destroy'])->name('genre.destroy');
 });
 
 // songs
 Route::get('/song/all', [SongController::class, 'index'])->name('song.index');
-Route::get('/song/create', [SongController::class, 'create'])->name('song.create');
-Route::post('/song/store', [SongController::class, 'store'])->name('song.store');
+Route::middleware(LoginRequired::class)->group(function () {
+  Route::get('/song/create', [SongController::class, 'create'])->name('song.create');
+  Route::post('/song/store', [SongController::class, 'store'])->name('song.store');
+});
 Route::middleware(DeleteAuthorized::class)->group(function () {
   Route::get('/song/destroy/{song}', [SongController::class, 'destroy'])->name('song.destroy');
 });
