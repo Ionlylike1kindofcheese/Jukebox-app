@@ -43,12 +43,17 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
+      if (auth()->user()) {
+        return redirect(route('login'));
+      }
+
       $song = Song::create([
         "name" => $request['name'],
         "author" => $request['author'],
         "album" => $request['album'],
         "release" => $request['release'],
         "duration" => $request['duration'],
+        "contributor" => auth()->user()->email,
       ]);
 
       $songId = $song->getAttribute('id');
@@ -92,6 +97,10 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
+      if (auth()->user()->email != "admin@gmail.com") {
+        return redirect(route('login'));
+      }
+      
       $song->genres()->detach();
       Song::destroy($song->id);
       return redirect(route('song.index'));

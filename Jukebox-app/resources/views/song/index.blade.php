@@ -19,10 +19,16 @@
   <ul>
   @foreach($songs as $song)
     <li>
-      <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a>
+      @if(auth()->user())
+        @if(auth()->user()->email == "admin@gmail.com")
+          <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a>
+        @endif
+      @endif
       {{$song->name}}
     </li>
   @endforeach
   </ul>
-  <a href="{{route('song.create')}}">Song Toevoegen</a>
+  @if(auth()->user())
+    <a href="{{route('song.create')}}">Song Toevoegen</a>
+  @endif
 @endsection

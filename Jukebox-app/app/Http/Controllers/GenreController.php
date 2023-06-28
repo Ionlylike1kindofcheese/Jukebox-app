@@ -29,8 +29,13 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
+      if (auth()->user()) {
+        return redirect(route('login'));
+      }
+
       Genre::create([
-        "name" => $request['genreName']
+        "name" => $request['genreName'],
+        "contributor" => auth()->user()->email,
       ]);
       return redirect(route('genre.index'));
     }
@@ -64,6 +69,10 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
+      if (auth()->user()->email != "admin@gmail.com") {
+        return redirect(route('login'));
+      }
+      
       Genre::destroy($genre->id);
       return redirect(route('genre.index'));
     }
