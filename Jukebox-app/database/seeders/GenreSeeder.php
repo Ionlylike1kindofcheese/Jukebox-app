@@ -14,15 +14,15 @@ class GenreSeeder extends Seeder
   public function run(): void
   {
     $genres = [
-      ['name' => 'Rap', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Lyrics', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Explicit', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Single', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Pop', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Rock', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Metal', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Horror', 'contributor' => 'admin@gmail.com'],
-      ['name' => 'Chiptune', 'contributor' => 'admin@gmail.com'],
+      ['name' => 'Rap'],
+      ['name' => 'Lyrics'],
+      ['name' => 'Explicit'],
+      ['name' => 'Single'],
+      ['name' => 'Pop'],
+      ['name' => 'Rock'],
+      ['name' => 'Metal'],
+      ['name' => 'Horror'],
+      ['name' => 'Chiptune'],
     ];
     Genre::insert($genres);
   }
