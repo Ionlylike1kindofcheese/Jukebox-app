@@ -9,7 +9,7 @@ use App\Models\Playlist;
 
 class Song extends Model
 {
-  protected $fillable = ["name", "author", "album", "release", "duration", "genre_id"];
+  protected $fillable = ["name", "author", "album", "release", "duration", "genre_id", "contributor"];
   use HasFactory;
 
   public function genres() {

@@ -8,7 +8,7 @@ use App\Models\Song;
 
 class Playlist extends Model
 {
-  protected $fillable = ["name"];
+  protected $fillable = ["name", "contributor"];
   use HasFactory;
 
   public function songs() {

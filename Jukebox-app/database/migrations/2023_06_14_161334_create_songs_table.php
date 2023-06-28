@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('album');
             $table->date('release');
             $table->unsignedInteger('duration');
+            $table->string('contributor');
             $table->timestamps();
         });
     }
