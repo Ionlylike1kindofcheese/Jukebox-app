@@ -4,7 +4,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Middelware\DeleteAuthorized;
+use App\Http\Middleware\DeleteAuthorized;
 use Illuminate\Support\Facades\Route;
 
 /*
