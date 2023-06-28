@@ -11,3 +11,5 @@
 # 23-6-2023: Added navigation bar and footer to all views
 # 26-6-2023: Updated create and destroy functionality for Song
 # 26-6-2023: Added filter feature for Song
+# 27-6-2023: Added seeder for Users
+# 28-6-2023: Updated creation and deletion features with login requirements
