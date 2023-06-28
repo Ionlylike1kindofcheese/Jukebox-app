@@ -19,10 +19,8 @@
   <ul>
   @foreach($songs as $song)
     <li>
-      @if(auth()->user())
-        @if(auth()->user()->email == "admin@gmail.com")
-          <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a>
-        @endif
+      @if(auth()->user()?->email == "admin@gmail.com")
+        <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a>
       @endif
       {{$song->name}}
     </li>

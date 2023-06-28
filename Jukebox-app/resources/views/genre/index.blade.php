@@ -5,10 +5,8 @@
   <ul>
   @foreach($genres as $genre)
     <li>
-      @if(auth()->user())
-        @if(auth()->user()->email == "admin@gmail.com")        
-          <a href="{{route('genre.destroy', ['genre' => $genre->id])}}">X</a> 
-        @endif
+      @if(auth()->user()?->email == "admin@gmail.com")        
+        <a href="{{route('genre.destroy', ['genre' => $genre->id])}}">X</a> 
       @endif
       {{$genre->name}}
     </li>
