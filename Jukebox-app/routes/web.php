@@ -4,7 +4,10 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ProfileController;
+
 use App\Http\Middleware\DeleteAuthorized;
+use App\Http\Middleware\LoginRequired;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,9 +55,11 @@ Route::middleware(DeleteAuthorized::class)->group(function () {
 });
 
 // playlists
-Route::get('/playlist/all', [PlaylistController::class, 'index'])->name('playlist.index');
-Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
-Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
-Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
+Route::middleware(LoginRequired::class)->group(function () {
+  Route::get('/playlist/all', [PlaylistController::class, 'index'])->name('playlist.index');
+  Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
+  Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
+  Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
+});
 
 require __DIR__.'/auth.php';
