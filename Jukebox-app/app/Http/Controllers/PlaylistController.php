@@ -29,10 +29,6 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
-      if (auth()->user()) {
-        return redirect(route('login'));
-      }
-
       Playlist::create([
         "name" => $request['playlistName'],
         "contributor" => auth()->user()->email,
@@ -68,11 +64,7 @@ class PlaylistController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Playlist $playlist)
-    {
-      if (auth()->user()->email != "admin@gmail.com") {
-        return redirect(route('login'));
-      }
-      
+    {    
       Playlist::destroy($playlist->id);
       return redirect(route('playlist.index'));
     }

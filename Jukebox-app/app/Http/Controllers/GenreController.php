@@ -29,10 +29,6 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-      if (auth()->user()) {
-        return redirect(route('login'));
-      }
-
       Genre::create([
         "name" => $request['genreName'],
         "contributor" => auth()->user()->email,

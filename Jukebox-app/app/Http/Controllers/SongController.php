@@ -43,10 +43,6 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-      if (auth()->user()) {
-        return redirect(route('login'));
-      }
-
       $song = Song::create([
         "name" => $request['name'],
         "author" => $request['author'],
