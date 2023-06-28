@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 
 // genre
 Route::get('/genre/all', [GenreController::class, 'index'])->name('genre.index');
-Route::middleware(LoginRequired::class)->group(function () {
+Route::middleware(AdminAuthorized::class)->group(function () {
   Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
   Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
 });

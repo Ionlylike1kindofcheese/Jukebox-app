@@ -12,7 +12,7 @@
     </li>
   @endforeach
   </ul>
-  @if(auth()->user())  
+  @if(auth()->user()?->email == "admin@gmail.com")  
     <a href="{{route('genre.create')}}">Genre Toevoegen</a>
   @endif
 @endsection
