@@ -35,9 +35,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// users
-Route::get('/getallusernames', [ProfileController::class, 'getAllUserNames']);
-
 // genre
 Route::get('/genre/all', [GenreController::class, 'index'])->name('genre.index');
 Route::middleware(LoginRequired::class)->group(function () {

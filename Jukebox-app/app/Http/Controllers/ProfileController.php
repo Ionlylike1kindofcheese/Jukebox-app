@@ -60,12 +60,4 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
-
-    public function getAllUserNames() {
-      // haal alle users op
-      $users = User::all();
-
-      // dd($users);
-      return view('profile.allUsers', ['users'=>$users]);
-    }
 }
