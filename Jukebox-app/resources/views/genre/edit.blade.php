@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('mainContent')
-  <h1>Aanpassen Genre</h1>
+  <h1>Edit Genre</h1>
 
   <form method="POST" action="{{ route('genre.update', $genre->id) }}">
     @csrf
