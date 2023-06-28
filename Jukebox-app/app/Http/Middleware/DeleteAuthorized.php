@@ -19,7 +19,7 @@ class DeleteAuthorized
     if(Auth::user()->email == "admin@gmail.com") {
       return $next($request);
     } else {
-      return redirect(route('genre.index'));
+      return redirect()->back();
     }
   }
 }
