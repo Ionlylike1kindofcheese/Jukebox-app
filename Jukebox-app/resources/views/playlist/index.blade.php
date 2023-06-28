@@ -6,10 +6,8 @@
   @foreach($playlists as $playlist)  
     <li>
       @if(auth()->user())
-        @if(auth()->user()->email == "admin@gmail.com")
-          <a href="{{route('playlist.destroy', ['playlist' => $playlist->id])}}">X</a>
-        @endif 
-      @endif
+        <a href="{{route('playlist.destroy', ['playlist' => $playlist->id])}}">X</a>
+      @endif 
       {{$playlist->name}}
     </li>
   @endforeach
