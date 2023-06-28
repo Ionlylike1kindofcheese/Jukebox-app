@@ -40,9 +40,8 @@ Route::get('/genre/all', [GenreController::class, 'index'])->name('genre.index')
 Route::middleware(AdminAuthorized::class)->group(function () {
   Route::get('/genre/create', [GenreController::class, 'create'])->name('genre.create');
   Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.store');
-});
-Route::middleware(AdminAuthorized::class)->group(function () {
-  Route::get('/genre/destroy/{genre}', [GenreController::class, 'destroy'])->name('genre.destroy');
+  Route::get('/genre/edit/{genre}', [GenreController::class, 'edit'])->name('genre.edit');
+  Route::put('/genre/update/{genre}', [GenreController::class, 'update'])->name('genre.update');
 });
 
 // songs

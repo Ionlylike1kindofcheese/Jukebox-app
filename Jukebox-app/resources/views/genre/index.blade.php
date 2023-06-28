@@ -1,18 +1,18 @@
 @extends('layouts.master')
 
 @section('mainContent')
-  <h1>Dit is een totaaloverzicht van alle genres</h1>
+  <h1>Totaloverview Genres</h1>
   <ul>
   @foreach($genres as $genre)
     <li>
+      {{$genre->name}} 
       @if(auth()->user()?->email == "admin@gmail.com")        
-        <a href="{{route('genre.destroy', ['genre' => $genre->id])}}">X</a> 
+        <a href="{{route('genre.edit', ['genre' => $genre->id])}}">Edit</a> 
       @endif
-      {{$genre->name}}
     </li>
   @endforeach
   </ul>
   @if(auth()->user()?->email == "admin@gmail.com")  
-    <a href="{{route('genre.create')}}">Genre Toevoegen</a>
+    <a href="{{route('genre.create')}}">Add new Genre</a>
   @endif
 @endsection
