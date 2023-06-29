@@ -32,8 +32,17 @@ class PlaylistController extends Controller
      */
     public function store(Request $request)
     {
+      $messages = [
+        'required' => 'This field is required',
+        'string' => 'This value must be a word',
+      ];
+
+      $request->validate([
+        'name' => ['required', 'string'],
+      ], $messages);
+      
       Playlist::create([
-        "name" => $request['playlistName'],
+        "name" => $request['name'],
         "contributor" => auth()->user()->email,
       ]);
       return redirect(route('playlist.index'));
@@ -68,6 +77,15 @@ class PlaylistController extends Controller
      */
     public function update(Request $request, Playlist $playlist)
     {
+      $messages = [
+        'required' => 'This field is required',
+        'string' => 'This value must be a word',
+      ];
+
+      $request->validate([
+        'name' => ['required', 'string'],
+      ], $messages);
+      
       $playlist->name = $request->input('name');
       $playlist->save();
       return redirect(route('playlist.index'));

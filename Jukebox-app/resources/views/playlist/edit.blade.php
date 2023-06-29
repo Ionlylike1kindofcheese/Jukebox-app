@@ -9,7 +9,10 @@
     <div>
       <label for="name">Playlist Name:</label>
       <input type="text" id="name" name="name" value="{{ $playlist->name }}" required>
-      <button type="submit">Update</button>
+      <input type="submit" value="Update"></input>
+      @error('name')
+        <span class="error-message">{{$message}}</span>
+      @enderror
     </div>
   </form>
   <a href="{{route('playlist.index')}}">Return to overview</a>
