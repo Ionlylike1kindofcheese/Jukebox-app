@@ -9,9 +9,23 @@
 <body>
   <nav class="comp-navbar">
     <ul>
-      <a href="{{route('genre.index')}}">Genre</a>
-      <a href="{{route('song.index')}}">Song</a>
-      <a href="{{route('playlist.index')}}">Playlist</a>
+      <div>
+        <a href="{{route('genre.index')}}" class="left-assign">Genre</a>
+        <a href="{{route('song.index')}}" class="left-assign">Song</a>
+        <a href="{{route('playlist.index')}}" class="left-assign">Playlist</a>
+      </div>
+      <div>
+        @if (Route::has('login'))
+          @auth
+            <a href="{{ url('/dashboard') }}" class="right-assign">Dashboard</a>
+          @else
+            <a href="{{ route('login') }}" class="right-assign">Log in</a>
+            @if (Route::has('register'))
+              <a href="{{ route('register') }}" class="right-assign">Register</a>
+            @endif
+          @endauth
+        @endif
+      </div>
     </ul>
   </nav>
   <main>
