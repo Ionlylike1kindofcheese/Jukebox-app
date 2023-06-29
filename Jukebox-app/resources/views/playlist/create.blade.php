@@ -7,4 +7,5 @@
     <input name="playlistName" type="text"></input>
     <input type="submit" value="Bevestig"></input>
   </form>
+  <a href="{{route('playlist.index')}}">Return to overview</a>
 @endsection

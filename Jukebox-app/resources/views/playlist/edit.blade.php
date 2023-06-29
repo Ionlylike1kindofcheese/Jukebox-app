@@ -12,4 +12,5 @@
       <button type="submit">Update</button>
     </div>
   </form>
+  <a href="{{route('playlist.index')}}">Return to overview</a>
 @endsection
