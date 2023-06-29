@@ -9,6 +9,7 @@
         <a href="{{route('playlist.destroy', ['playlist' => $playlist->id])}}">X</a>
       @endif 
       {{$playlist->name}}
+      <a href="{{route('playlist.view', ['playlist' => $playlist->id])}}">View</a>
     </li>
   @endforeach
   </ul>

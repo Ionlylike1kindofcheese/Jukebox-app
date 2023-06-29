@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Playlist;
+use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlaylistController extends Controller
 {
@@ -42,7 +44,15 @@ class PlaylistController extends Controller
      */
     public function show(Playlist $playlist)
     {
-        //
+      $ascos = DB::table('playlist_song')->where('playlist_id', $playlist->id)->get();
+      $songs = [];
+      foreach ($ascos as $asco) {
+          $song = Song::find($asco->song_id);
+          if ($song) {
+              $songs[] = $song;
+          }
+      }
+      return view('playlist.view', ['playlist' => $playlist, 'songs' => $songs]);
     }
 
     /**
