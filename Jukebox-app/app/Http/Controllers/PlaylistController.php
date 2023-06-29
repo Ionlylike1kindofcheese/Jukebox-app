@@ -77,7 +77,8 @@ class PlaylistController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Playlist $playlist)
-    {    
+    { 
+      $playlist->songs()->detach();   
       Playlist::destroy($playlist->id);
       return redirect(route('playlist.index'));
     }
