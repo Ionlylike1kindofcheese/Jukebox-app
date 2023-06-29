@@ -29,9 +29,17 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
+      $messages = [
+        'required' => 'This field is required',
+        'string' => 'This value must be a word',
+      ];
+
+      $request->validate([
+        'name' => ['required', 'string'],
+      ], $messages);
+
       Genre::create([
-        "name" => $request['genreName'],
-        "contributor" => auth()->user()->email,
+        "name" => $request['name'],
       ]);
       return redirect(route('genre.index'));
     }
@@ -57,6 +65,15 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
+      $messages = [
+        'required' => 'This field is required',
+        'string' => 'This value must be a word',
+      ];
+
+      $request->validate([
+        'name' => ['required', 'string'],
+      ], $messages);
+      
       $genre->name = $request->input('name');
       $genre->save();
       return redirect(route('genre.index'));

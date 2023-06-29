@@ -8,8 +8,11 @@
     @method('PUT')
     <div>
       <label for="name">Genre Name:</label>
-      <input type="text" id="name" name="name" value="{{ $genre->name }}" required>
-      <button type="submit">Update</button>
+      <input type="text" id="name" name="name" value="{{ $genre->name }}">
+      <input type="submit" value="Submit"></input>
+      @error('name')
+        <span class="error-message">{{$message}}</span>
+      @enderror
     </div>
   </form>
   <a href="{{route('genre.index')}}">Return to overview</a>
