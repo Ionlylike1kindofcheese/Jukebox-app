@@ -92,6 +92,15 @@ class PlaylistController extends Controller
     }
 
     /**
+     * Remove the association from storage.
+     */
+    public function detach(Playlist $playlist, Song $song)
+    {
+      $playlist->songs()->detach($song->id);
+      return redirect(route('playlist.view', ['playlist' => $playlist]));
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Playlist $playlist)

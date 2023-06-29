@@ -63,6 +63,7 @@ Route::middleware(LoginRequired::class)->group(function () {
   Route::put('/playlist/update/{playlist}', [PlaylistController::class, 'update'])->name('playlist.update');
   Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
   Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
+  Route::get('/playlist/detach/{playlist}/{song}', [PlaylistController::class, 'detach'])->name('playlist.detach');
   Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
 });
 

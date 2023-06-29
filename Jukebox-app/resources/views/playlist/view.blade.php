@@ -8,6 +8,7 @@
   @endphp
   @foreach($songs as $song)
     <li>
+      <a href="{{ route('playlist.detach', ['playlist' => $playlist->id, 'song' => $song->id]) }}">X</a>
       {{$song->name}}
       @php
         $totalDuration += $song->duration;
