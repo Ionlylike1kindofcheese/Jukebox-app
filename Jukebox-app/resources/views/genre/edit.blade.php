@@ -9,7 +9,7 @@
     <div>
       <label for="name">Genre Name:</label>
       <input type="text" id="name" name="name" value="{{ $genre->name }}">
-      <input type="submit" value="Submit"></input>
+      <input type="submit" value="Update"></input>
       @error('name')
         <span class="error-message">{{$message}}</span>
       @enderror
