@@ -60,7 +60,7 @@ class PlaylistController extends Controller
      */
     public function edit(Playlist $playlist)
     {
-        //
+      return view('playlist.edit', compact('playlist'));
     }
 
     /**
@@ -68,7 +68,9 @@ class PlaylistController extends Controller
      */
     public function update(Request $request, Playlist $playlist)
     {
-        //
+      $playlist->name = $request->input('name');
+      $playlist->save();
+      return redirect(route('playlist.index'));
     }
 
     /**

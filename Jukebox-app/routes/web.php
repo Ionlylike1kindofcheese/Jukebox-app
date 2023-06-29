@@ -59,6 +59,8 @@ Route::middleware(AdminAuthorized::class)->group(function () {
 Route::middleware(LoginRequired::class)->group(function () {
   Route::get('/playlist/all', [PlaylistController::class, 'index'])->name('playlist.index');
   Route::get('/playlist/view/{playlist}', [PlaylistController::class, 'show'])->name('playlist.view');
+  Route::get('/playlist/edit/{playlist}', [PlaylistController::class, 'edit'])->name('playlist.edit');
+  Route::put('/playlist/update/{playlist}', [PlaylistController::class, 'update'])->name('playlist.update');
   Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
   Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
   Route::get('/playlist/destroy/{playlist}', [PlaylistController::class, 'destroy'])->name('playlist.destroy');
