@@ -22,7 +22,8 @@
       @if(auth()->user()?->email == "admin@gmail.com")
         <a href="{{route('song.destroy', ['song' => $song->id])}}">X</a>
       @endif
-      {{$song->name}}
+      {{$song->name}} 
+      <a href="{{route('song.view', ['song' => $song->id])}}">View </a>
     </li>
   @endforeach
   </ul>

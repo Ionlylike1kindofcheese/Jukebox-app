@@ -46,6 +46,7 @@ Route::middleware(AdminAuthorized::class)->group(function () {
 
 // songs
 Route::get('/song/all', [SongController::class, 'index'])->name('song.index');
+Route::get('/song/view/{song}', [SongController::class, 'show'])->name('song.view');
 Route::middleware(LoginRequired::class)->group(function () {
   Route::get('/song/create', [SongController::class, 'create'])->name('song.create');
   Route::post('/song/store', [SongController::class, 'store'])->name('song.store');
