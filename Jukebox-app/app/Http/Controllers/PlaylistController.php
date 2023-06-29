@@ -12,7 +12,8 @@ class PlaylistController extends Controller
      */
     public function index()
     {
-      $playlists = Playlist::all();
+      $currentUser = auth()->user();
+      $playlists = Playlist::where('contributor', $currentUser->email)->get();
       return view('playlist.index', ['playlists' => $playlists]);
     }
 
