@@ -43,6 +43,24 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
+      $messages = [
+        'required' => 'This field is required',
+        'date' => 'This value should be a date',
+        'string' => 'This value must be a word',
+        'integer' => 'This value must be a number',
+        'before:now' => 'This date cannot be in the future',
+        'array' => 'At least 1 genre is required',
+      ];
+
+      $request->validate([
+        'name' => ['required', 'string'],
+        'author' => ['required', 'string'],
+        'album' => ['required', 'string'],
+        'release' => ['required', 'date', 'before:now'],
+        'duration' => ['required', 'integer'],
+        'genre_id' => ['required', 'array'],
+      ], $messages);
+
       $song = Song::create([
         "name" => $request['name'],
         "author" => $request['author'],
