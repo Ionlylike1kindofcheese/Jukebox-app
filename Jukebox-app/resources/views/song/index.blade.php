@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('mainContent')
-  <h1>Dit is een totaaloverzicht van alle songs</h1>
+  <h1>Totaloverview Songs</h1>
 
   <form action="{{ route('song.index') }}" method="GET">
     <label for="genre">Filter by Genre:</label>
@@ -28,6 +28,6 @@
   @endforeach
   </ul>
   @if(auth()->user())
-    <a href="{{route('song.create')}}">Song Toevoegen</a>
+    <a href="{{route('song.create')}}">Add new song</a>
   @endif
 @endsection

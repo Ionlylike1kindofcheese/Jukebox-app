@@ -3,7 +3,7 @@
 @section('mainContent')
   <form method="POST" action="{{route('playlist.store')}}">
     @csrf
-    <label>Vul een naam in voor een playlist</label>
+    <label>Playlist name:</label>
     <input name="playlistName" type="text"></input>
     <input type="submit" value="Bevestig"></input>
   </form>
