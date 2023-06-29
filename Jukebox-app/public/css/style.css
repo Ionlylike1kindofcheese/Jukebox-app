@@ -1,13 +1,29 @@
+body {
+  margin: 0px;
+}
+
+main {
+  margin: 8px;
+}
+
 .comp-navbar ul {
   display: flex;
   margin: 0px;
+  padding: 0.5em;
   background-color: grey;
+  justify-content: space-between;
+}
+
+.comp-navbar div {
+  display: flex;
 }
 
 .comp-navbar a {
   padding: 10px;
-  margin-right: 3px;
-  background-color: black;
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+  background-color: lightgray;
+  border: 2px solid red
 }
 
 #song-creation-genre-checkboxes {
