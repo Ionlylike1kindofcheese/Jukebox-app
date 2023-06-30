@@ -111,6 +111,14 @@ class SongController extends Controller
      */
     public function destroy(Song $song)
     {
+      DB::table('deleted_songs')->insert([
+        'song_id' => $song->id,
+        'name' => $song->name,
+        'author' => $song->name,
+        'release' => $song->release,
+        'contributor' => $song->contributor,
+      ]);
+
       $song->genres()->detach();
       Song::destroy($song->id);
       return redirect(route('song.index'));
