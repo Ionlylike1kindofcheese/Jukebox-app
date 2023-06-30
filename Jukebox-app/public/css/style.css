@@ -26,11 +26,11 @@ main {
   border: 2px solid red
 }
 
-#song-creation-genre-checkboxes {
+#song-creation-genre-checkboxes, #playlist-addition-song-checkboxes {
   display: flex;
 }
 
-#song-creation-genre-checkboxes .song-creation-genre-box {
+#song-creation-genre-checkboxes .song-creation-genre-box, #playlist-addition-song-checkboxes .playlist-addition-song-box {
   padding: 1em;
   border: 2px solid black;
 }

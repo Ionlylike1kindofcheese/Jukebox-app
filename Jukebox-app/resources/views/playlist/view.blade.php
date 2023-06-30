@@ -25,5 +25,6 @@
   @endforeach
   </ul>
   <p>Total duration: {{ gmdate('H:i:s', $totalDuration) }}</p>
+  <a href="{{route('playlist.add', ['playlist' => $playlist->id])}}">Add songs to playlist</a> <br>
   <a href="{{route('playlist.index')}}">Return to overview</a>
 @endsection

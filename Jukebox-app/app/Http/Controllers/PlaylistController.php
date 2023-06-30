@@ -95,6 +95,41 @@ class PlaylistController extends Controller
     }
 
     /**
+     * Show the form for adding new associations.
+     */
+    public function add(Playlist $playlist)
+    {
+      $associatedSongIds = $playlist->songs()->pluck('song_id')->toArray();
+      $songs = Song::whereNotIn('id', $associatedSongIds)->get();
+      return view('playlist.add', ['songs' => $songs, 'playlist' => $playlist]);
+    }
+
+    /**
+     * Insert new selected associations.
+     */
+    public function insert(Request $request, Playlist $playlist)
+    {
+      $messages = [
+        'required' => 'This field is required',
+        'array' => 'At least 1 genre is required',
+      ];
+
+      $request->validate([
+        'song_id' => ['required', 'array'],
+      ], $messages);
+
+      $playlistId = $playlist->getAttribute('id');
+
+      foreach ($request["song_id"] as $songId) {
+        DB::table('playlist_song')->insert([
+          'playlist_id' => $playlistId,
+          'song_id' => $songId,
+        ]);
+      }
+      return redirect(route('playlist.view', ['playlist' => $playlistId]));
+    }
+
+    /**
      * Remove the association from storage.
      */
     public function detach(Playlist $playlist, $song)

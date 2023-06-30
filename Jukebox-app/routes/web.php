@@ -61,6 +61,8 @@ Route::middleware(LoginRequired::class)->group(function () {
   Route::get('/playlist/view/{playlist}', [PlaylistController::class, 'show'])->name('playlist.view');
   Route::get('/playlist/edit/{playlist}', [PlaylistController::class, 'edit'])->name('playlist.edit');
   Route::put('/playlist/update/{playlist}', [PlaylistController::class, 'update'])->name('playlist.update');
+  Route::get('/playlist/add/{playlist}', [PlaylistController::class, 'add'])->name('playlist.add');
+  Route::post('/playlist/insert/{playlist}', [PlaylistController::class, 'insert'])->name('playlist.insert');
   Route::get('/playlist/create', [PlaylistController::class, 'create'])->name('playlist.create');
   Route::post('/playlist/store', [PlaylistController::class, 'store'])->name('playlist.store');
   Route::get('/playlist/detach/{playlist}/{song}', [PlaylistController::class, 'detach'])->name('playlist.detach');
