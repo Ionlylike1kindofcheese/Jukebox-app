@@ -56,10 +56,13 @@ class PlaylistController extends Controller
       $ascos = DB::table('playlist_song')->where('playlist_id', $playlist->id)->get();
       $songs = [];
       foreach ($ascos as $asco) {
-          $song = Song::find($asco->song_id);
-          if ($song) {
-              $songs[] = $song;
-          }
+        $song = Song::find($asco->song_id);      
+        if ($song) {
+          $songs[] = $song;
+        } else {
+          $song = DB::table('deleted_songs')->where('song_id', $asco->song_id)->first(); 
+          $songs[] = $song;
+        }
       }
       return view('playlist.view', ['playlist' => $playlist, 'songs' => $songs]);
     }
@@ -94,9 +97,14 @@ class PlaylistController extends Controller
     /**
      * Remove the association from storage.
      */
-    public function detach(Playlist $playlist, Song $song)
+    public function detach(Playlist $playlist, $song)
     {
-      $playlist->songs()->detach($song->id);
+      if ($song instanceof Song) {
+        $songId = $song->id;
+      } elseif (is_numeric($song)) {
+        $songId = $song;
+      }
+      $playlist->songs()->detach($songId);
       return redirect(route('playlist.view', ['playlist' => $playlist]));
     }
 

@@ -39,3 +39,7 @@ main {
   font-weight: bold; 
   color:red;
 }
+
+.song-removed {
+  color: gray;
+}
